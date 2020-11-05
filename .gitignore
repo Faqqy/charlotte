@@ -1,0 +1,12 @@
+config.php
+config-dist.php
+/admin/config.php
+.htaccess
+.htaccess
+index.php
+php.ini
+/node_modules
+package.json
+package-lock.json
+.idea/
+robots.txt
