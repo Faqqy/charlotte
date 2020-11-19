@@ -1,53 +1,116 @@
 <footer>
   <div class="container">
     <div class="row">
-      <?php if ($informations) { ?>
-      <div class="col-sm-3">
-        <h5><?php echo $text_information; ?></h5>
-        <ul class="list-unstyled">
-          <?php foreach ($informations as $information) { ?>
-          <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
-          <?php } ?>
+      <div class="col-sm-2">
+
+        <ul class="list-unstyled foot__list">
+
+          <li><a href="/">Главная</a></li>
+          <li><a href="/uhod-za-kozhej">Уход за кожей</a></li>
+          <li><a href="/makiyazh">Макияж</a></li>
+          <li><a href="/">Лидеры продаж</a></li>
+          <li><a href="/">О магазине</a></li>
+          <li><a href="/dostavka-i-oplata">Доставка и оплата</a></li>
+
         </ul>
       </div>
-      <?php } ?>
-      <div class="col-sm-3">
-        <h5><?php echo $text_service; ?></h5>
-        <ul class="list-unstyled">
-          <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
-          <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
-          <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
+
+      <div class="col-sm-4">
+        <ul class="list-unstyled foot__list-add__adres">
+          <li><span style="text-decoration: underline;">Режим работы:</span> <br>
+            ПН-ПТ с 09-00 до 22-00<br>
+            СБ с 10:00 до 21:00<br>
+            ВС с 10:00 до 21:00<br>
+          </li>
         </ul>
+        <ul class="list-unstyled foot__list-add">
+          <li><span style="text-decoration: underline;">Наш адрес:</span> <br> Россия, г. Москва,
+            улица Верхние Поля, <br>
+            дом 51А троение 4 </li>
+        </ul>
+        <li class="soc_info">
+          <a href="https://www.facebook.com/ZoevaCosmetics"><picture><img src="catalog/view/theme/charlotte/image/social/fb.jpg" alt="facebook"></picture> </a>
+          <a href="https://www.youtube.com/user/ZoevaCosmetics"><picture><img src="catalog/view/theme/charlotte/image/social/yout.jpg" alt="youtube"></picture></a>
+          <a href="https://www.instagram.com/ctilburymakeup/"><picture><img src="catalog/view/theme/charlotte/image/social/inst.jpg" alt="instagram"></picture></a>
+        </li>
       </div>
-      <div class="col-sm-3">
-        <h5><?php echo $text_extra; ?></h5>
-        <ul class="list-unstyled">
-          <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
-          <li><a href="<?php echo $voucher; ?>"><?php echo $text_voucher; ?></a></li>
-          <li><a href="<?php echo $affiliate; ?>"><?php echo $text_affiliate; ?></a></li>
-          <li><a href="<?php echo $special; ?>"><?php echo $text_special; ?></a></li>
-        </ul>
+      <div class="col-sm-6">
+        <div class="about__us">
+          <ul class="list-unstyled">
+            <li><span>Служба поддержки:</span> <br> </li>
+            <li><a style="text-decoration: underline;" href="mailto:info@charlottetilbury.ru.com">info@charlottetilbury.ru.com</a></li>
+          </ul>
+          <ul class="list-unstyled">
+            <div class="subscribe-box" style="margin-bottom: 20px;">
+              <h3 class="subscribe-title">Будьте в курсе всех акций и скидок магазина *</h3>
+              <div class="subscribe-form">
+                <form class="form-inline" action="" method="post">
+                  <div class="form-group required">
+                    <label class="sr-only" for="exampleInputAmount">Email:</label>
+                    <input class="subcribe__email" type="email" class="form-control" name="txtemail" id="txtemail" placeholder="Укажите ваш Email">
+                    <button type="submit" class="button_subscribe" onclick="return subscribe();">Подписаться сейчас</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </ul>
+        </div>
       </div>
-      <div class="col-sm-3">
-        <h5><?php echo $text_account; ?></h5>
-        <ul class="list-unstyled">
-          <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-          <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-          <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
-          <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
-        </ul>
+
+  </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="bottom__info">Интернет-магазин Charlotte Tilbury является сертифицированным дистрибьютором косметики в России. Все изделия оригинальные, произведены в Великобритании. косметические товары Charlotte Tilbury отличаются высоким качеством, гипоаллергенностью и стойкостью. Вы можете легко купить косметику Charlotte Tilbury в нашем официальном магазине косметики. Гарантирующий оригинальность полученных вами товаров. ОСТЕРЕГАЙТЕСЬ НЕДОБРОСОВЕСТНЫХ ПРОДАВЦОВ, ТОРГУЮЩИХ КОПИЯМИ БРЕНДА.</p>
       </div>
     </div>
-    <hr>
-    <p><?php echo $powered; ?></p>
-  </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <p>Charlotte Tilbury Russia. Все права защищены ©</p> <!--<a href="/">Политика конфиденциальности</a>-->
+      </div>
+    </div>
 </footer>
 
-<!--
-OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
-Please donate via PayPal to donate@opencart.com
-//-->
+<script>
+  function subscribe()
+  {
+    var emailpattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var email = $('#txtemail').val();
+    if(email != "")
+    {
+      if(!emailpattern.test(email))
+      {
+        alert("Неправильный Email");
+        return false;
+      }
+      else
+      {
+        $.ajax({
+          url: 'index.php?route=module/newsletters/news',
+          type: 'post',
+          data: 'email=' + $('#txtemail').val(),
+          dataType: 'json',
 
-<!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
 
-</body></html>
+          success: function(json) {
+
+            alert(json.message);
+
+          }
+
+        });
+        return false;
+      }
+    }
+    else
+    {
+      alert("Email обязательно");
+      $(email).focus();
+      return false;
+    }
+
+
+  }
+</script>
+
+</body>
+</html>

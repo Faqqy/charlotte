@@ -10,7 +10,7 @@ gulp.task('browser-sync', function () {
 
     browserSync.init( {
         proxy: 'charlotte.loc/',
-        notify: false
+        notify: true
     });
     browserSync.watch('catalog/view/theme/charlotte/', browserSync.reload)
 });

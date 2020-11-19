@@ -48,13 +48,12 @@
 <?php } ?>
 </head>
 <body class="<?php echo $class; ?>">
-<nav id="top">
-  <div class="container">
-    <span><?php echo $fax; ?></span>
-  </div>
-</nav>
+
 <header>
-  <div class="container">
+  <nav id="top">
+    <span><?php echo $fax; ?></span>
+  </nav>
+  <div class="container-fluid" style="padding: 0!important;">
     <div class="row">
       <div class="col-sm-12">
         <div id="logo">
@@ -71,18 +70,20 @@
       </div>
 
 
-      <div class="col-sm-10">
+      <div class="col-md-12">
         <?php if ($categories) { ?>
         <nav id="menu" class="navbar">
           <div class="navbar-header"> <!--<span id="category" class="visible-xs"><?php echo $text_category; ?></span>-->
             <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
           </div>
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <div class="collapse navbar-collapse navbar-ex1-collapse"  style="padding: 0!important;">
             <ul class="nav navbar-nav">
-              <?php foreach ($categories as $category) { ?>
+
+                <?php foreach ($categories as $category) { ?>
+
               <?php if ($category['children']) { ?>
-              <li class="dropdown"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
-                <div class="dropdown-menu">
+              <li class="dropdown top__menu"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
+                <div class="dropdown-menu poupp__menu">
                   <div class="dropdown-inner">
                     <?php foreach (array_chunk($category['children'], ceil(count($category['children']) / $category['column'])) as $children) { ?>
                     <ul class="list-unstyled">
@@ -92,32 +93,25 @@
                     </ul>
                     <?php } ?>
                   </div>
-                  <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a> </div>
+                  <a href="<?php echo $category['href']; ?>" class="see-all"><?php echo $text_all; ?> <?php echo $category['name']; ?></a>
+                </div>
               </li>
               <?php } else { ?>
-              <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+              <li class="top__menu"><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
               <?php } ?>
               <?php } ?>
               <?php foreach ($informations as $information) { ?>
-              <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
+              <li class="top__menu"><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
               <?php } ?>
-              <li><?php echo $search; ?></li>
+              <?php echo $search; ?>
+              <li class="top__menu"><?php echo $cart; ?></li>
             </ul>
           </div>
         </nav>
         <?php } ?>
       </div>
-      <div class="col-sm-2">
 
 
-
-      </div>
-
-      <div class="col-sm-2">
-
-        <?php echo $cart; ?>
-
-      </div>
 
 
 

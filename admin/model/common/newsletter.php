@@ -8,11 +8,9 @@ class ModelCommonNewsletter extends Model {
 		if($res0->num_rows == 0){
 			$this->db->query("
 				CREATE TABLE IF NOT EXISTS `".DB_PREFIX."newsletter` (
-				    `id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
-                    `email` VARCHAR( 255 ) NOT NULL ,
-                    `group` VARCHAR( 25 ) NOT NULL ,
-                    `date_added` DATETIME NOT NULL ,
-				  PRIMARY KEY (`id`)
+				  `news_id` int(11) NOT NULL AUTO_INCREMENT,
+				  `news_email` varchar(255) NOT NULL,
+				  PRIMARY KEY (`news_id`)
 				) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 			");
 		}
@@ -24,9 +22,5 @@ class ModelCommonNewsletter extends Model {
 		$query = $this->db->query("SELECT * FROM ". DB_PREFIX ."newsletter"); 
 
 		return $query->rows;
-	}
-
-	public function deleteNewsletter($id) {
-		$query = $this->db->query("DELETE FROM ". DB_PREFIX ."newsletter WHERE id=".$id); 
 	}
 }

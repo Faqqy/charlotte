@@ -2,7 +2,13 @@ $(function () {
 
     $('.product-thumb h4').css('height', '').equalHeights();
     $('#search').css({'display': 'inline-block', 'width': '150px'});
-    $('#search__button').css({'display': 'inline-block', 'width': '90px'});
+    $('#search__button').css({'display': 'inline-block', 'width': '96px', 'border': 'none', 'box-shadow': 'none', 'text-transform': 'uppercase', 'margin-top': '2px'});
+
+    $('.input-group').each(function () {
+        $(this).children('#search__button').addClass('.top__head-search');
+    });
+
+    $('.poupp__menu')
 
     $(document).ready(function () {
 

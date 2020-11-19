@@ -161,7 +161,7 @@ var cart = {
 
 					// Need to set timeout otherwise it wont update the total
 					setTimeout(function () {
-						$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+						$('#cart > button').html('<img src="catalog/view/theme/charlotte/image/icons/cart.png"><span class="count">' + json['count'] + '</span>');
 					}, 100);
 
 					$('html, body').animate({ scrollTop: 0 }, 'slow');
@@ -189,7 +189,7 @@ var cart = {
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
 				setTimeout(function () {
-					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+					$('#cart > button').html('<img src="catalog/view/theme/charlotte/image/icons/cart.png"><span class="count">' + json['count'] + '</span>');
 				}, 100);
 
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
@@ -218,9 +218,13 @@ var cart = {
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
 				setTimeout(function () {
-					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
+					if (json['count'] != null) {
+						$('#cart > button').html('<img src="catalog/view/theme/charlotte/image/icons/cart.png"><span class="count">' + json['count'] + '</span>');
+					} else {
+						$('#cart > button').html('<img src="catalog/view/theme/charlotte/image/icons/cart.png">');
+					}
 				}, 100);
-				
+
 				var now_location = String(document.location.pathname);
 
 				if ((now_location == '/cart/') || (now_location == '/checkout/') || (getURLVar('route') == 'checkout/cart') || (getURLVar('route') == 'checkout/checkout')) {
