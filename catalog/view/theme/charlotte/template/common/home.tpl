@@ -39,7 +39,7 @@
 </div>
 
 <div class="two__banner-info">
-  <div class="container" style="padding-left: 0!important;">
+  <div class="container" style="padding-left: 0;">
     <div class="col-md-6 col-xs-12">
       <div style="background-image: url(/catalog/view/theme/charlotte/image/infobanner3.jpg)" class="item">
         <a href="#">

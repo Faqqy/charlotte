@@ -30,7 +30,45 @@ header
   margin-top: 200px
 
 #column-left
-  margin-top: 200px
+  margin-top: 420px
+
+#open_list
+  display: none
+
+.list-group-item
+  border: none
+
+.noUi-tooltip
+  border: none!important
+  background: none!important
+  color: $accent!important
+
+.noUi-horizontal .noUi-tooltip
+  left: 13%!important
+  bottom: -113%!important
+
+.LMCfilter_price .noUi-origin:first-child .noUi-tooltip
+  top: 78%!important
+
+.panel
+  background: none
+  border-top: none
+  border-right: none
+  border-left: none
+  border-bottom: 1px solid $accent
+  border-radius: 0
+  margin-left: 15px
+  margin-right: 15px
+
+#click__item
+  cursor: pointer
+  padding-left: 10px
+  padding-right: 10px
+  span
+    float: right
+  &:hover
+    background: none
+
 
 footer
   font-family: $medium-font
@@ -176,13 +214,13 @@ footer
 
 .poupp__menu
   display: none
-  width: 100vw!important
-  height: 300px!important
+  width: 130vw!important
   border: none!important
   box-shadow: none!important
-  padding-left: 290px
+  padding-left: 430px
   padding-top: 20px
   background-color: #f5f3f3
+  left: -506px
   a
     display: block
     padding-bottom: 10px!important
@@ -191,8 +229,9 @@ footer
 .navbar-nav
   width: 100%
   margin: 0 auto
-  text-align: center
+  text-align: right
   display: inline-block
+  padding-right: 25px
 
 .top__menu
   display: inline-block!important
@@ -207,11 +246,12 @@ footer
 .top__banner
   background-image: url(/catalog/view/theme/charlotte/image/topbanner.png)
   background-size: cover
+  background-position: center center
   background-repeat: no-repeat
   height: 605px
   text-transform: uppercase
   text-align: center
-  margin-top: 140px
+  margin-top: -70px
   margin-bottom: 40px
   h2
     margin-top: 110px
@@ -251,6 +291,7 @@ footer
 .top__banner2
   background-image: url(/catalog/view/theme/charlotte/image/topbanner2.png)
   background-size: cover
+  background-position: center center
   background-repeat: no-repeat
   height: 603px
   text-align: right
@@ -282,6 +323,26 @@ footer
   &:hover
     background-color: #fff
     color: #d99088
+
+.button-product
+  display: inline-block
+  width: 234px
+  height: 55px
+  background-color: $accent
+  border-radius: 3px
+  text-align: center
+  text-transform: uppercase
+  color: #fff
+  margin: 35px auto
+  line-height: 58px
+  transition: .25s ease-in-out
+  font-size: 16px
+  font-weight: 600
+  letter-spacing: 1.4px
+  cursor: pointer
+  &:hover
+    background-color: #ffffff
+    color: $accent
 
 .top__item-block
   margin-bottom: 80px
@@ -380,7 +441,7 @@ footer
 
 .info__block
   padding-top: 400px
-  padding-right: 50px
+  padding-right: 76px
 
 .two__banner-info
   position: relative
@@ -409,6 +470,7 @@ footer
 .top__banner-two
   background-image: url(/catalog/view/theme/charlotte/image/bannertwo.png)
   background-size: cover
+  background-position: center center
   background-repeat: no-repeat
   height: 605px
   text-transform: uppercase
@@ -422,6 +484,78 @@ footer
     line-height: 27px
     font-weight: 600
     padding-top: 408px
+    margin-left: -50px
+  .button-pink
+    margin-top: 35px
+    margin-left: -50px
+
+.product-thumb
+  text-align: center
+  img
+    margin: 0 auto
+  .caption
+    a
+      font-family: $gotham-bold
+      font-size: 19px
+      color: $accent
+    p
+      font-family: $gotham-bold
+      font-size: 19px
+      color: $accent
+
+.breadcrumb
+  background: none
+  li
+    a
+      color: $accent!important
+      &:hover
+        color: $accent!important
+
+
+#input-quantity
+  width: 50px
+  height: 50px
+
+.thumbnails
+  padding: 0
+  li
+    list-style-type: none
+
+.thumbnail
+  border-radius: 0px
+
+.image-additional
+  width: 80px
+  display: inline-block
+
+.nav-tabs
+  border-bottom: none
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+  border: none
+  border-bottom: 2px solid #000
+  color: #000000
+
+.nav-tabs>li>a
+  font-size: 20px
+  text-transform: uppercase
+  color: #000
+  padding: 0
+  margin-right: 10px
+
+
+.nav-tabs>li>a:hover
+  border-bottom: none
+  border: none
+
+.nav>li>a:focus, .nav>li>a:hover
+  background: none
+
+.tab-content
+  padding-top: 20px
+  padding-bottom: 50px
+
+
 
 
 @import "media.sass"

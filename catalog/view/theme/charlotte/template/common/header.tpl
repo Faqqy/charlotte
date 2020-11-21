@@ -27,7 +27,7 @@
 <?php } ?>
 <meta property="og:site_name" content="<?php echo $name; ?>" />
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" />
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/charlotte/stylesheet/main.css" rel="stylesheet">
@@ -68,9 +68,11 @@
           <?php } ?>
         </div>
       </div>
-
-
-      <div class="col-md-12">
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9">
         <?php if ($categories) { ?>
         <nav id="menu" class="navbar">
           <div class="navbar-header"> <!--<span id="category" class="visible-xs"><?php echo $text_category; ?></span>-->
@@ -79,7 +81,7 @@
           <div class="collapse navbar-collapse navbar-ex1-collapse"  style="padding: 0!important;">
             <ul class="nav navbar-nav">
 
-                <?php foreach ($categories as $category) { ?>
+              <?php foreach ($categories as $category) { ?>
 
               <?php if ($category['children']) { ?>
               <li class="dropdown top__menu"><a href="<?php echo $category['href']; ?>" class="dropdown-toggle" data-toggle="dropdown"><?php echo $category['name']; ?></a>
@@ -104,19 +106,18 @@
               <li class="top__menu"><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
               <?php } ?>
               <?php echo $search; ?>
-              <li class="top__menu"><?php echo $cart; ?></li>
             </ul>
           </div>
         </nav>
         <?php } ?>
       </div>
 
-
-
-
-
+      <div class="col-md-3 col-xs-12">
+        <?php echo $cart; ?>
+      </div>
 
     </div>
   </div>
+
 </header>
 

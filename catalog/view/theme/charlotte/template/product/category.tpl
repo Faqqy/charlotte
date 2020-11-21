@@ -8,9 +8,6 @@
   </div>
   <?php } ?>
 
-  <!-- <?php if ($description) { ?>
-  <div class="col-sm-10"><?php echo $description; ?></div>
-  <?php } ?> -->
 
   <?php } ?>
   <div class="row"><?php echo $column_left; ?>
@@ -22,10 +19,13 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+      <div class="discription-text">
+        <?php echo $description; ?>
+      </div>
       <?php if ($categories) { ?>
-      <h3><?php echo $text_refine; ?></h3>
+
       <?php if (count($categories) <= 5) { ?>
-      <div class="row">
+      <!--<div class="row">
         <div class="col-sm-3">
           <ul>
             <?php foreach ($categories as $category) { ?>
@@ -33,7 +33,7 @@
             <?php } ?>
           </ul>
         </div>
-      </div>
+      </div>-->
       <?php } else { ?>
       <div class="row">
         <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
@@ -67,7 +67,7 @@
             <select id="input-sort" class="form-control" onchange="location = this.value;">
               <?php foreach ($sorts as $sorts) { ?>
               <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-              <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
+              <option value="<?php echo $sorts['href']; ?>" selected="selected">Сортировка</option>
               <?php } else { ?>
               <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
               <?php } ?>
@@ -124,11 +124,11 @@
                 </div>
                 <?php } ?> -->
               </div>
-              <!-- <div class="button-group">
-                <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
-                <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-                <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
-              </div> -->
+              <div class="button-group">
+                <button type="button" class="button_cart" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span>Добавить в корзину</span></button>
+                <!--<button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
+                <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>-->
+              </div>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="row">
         <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
-        <!--<div class="col-sm-6 text-right"><?php echo $results; ?></div>-->
+       <!-- <div class="col-sm-6 text-right"><?php echo $results; ?></div> -->
       </div>
       <?php } ?>
       <?php if (!$categories && !$products) { ?>

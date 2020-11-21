@@ -8,7 +8,10 @@ $(function () {
         $(this).children('#search__button').addClass('.top__head-search');
     });
 
-    $('.poupp__menu')
+    $("#click__item").click(function(e) {
+        $("#open_list").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
+            e.stopPropagation()
+    })
 
     $(document).ready(function () {
 
