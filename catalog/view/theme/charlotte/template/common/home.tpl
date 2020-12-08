@@ -28,11 +28,17 @@
 <div class="top__item-block">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop5.png)" class="item"><a href="#">Тени и карандаши</a></div>
-        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop6.png)" class="item"><a href="#">Румяна и хайлатеры</a></div>
-        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop7.png)" class="item"><a href="#">Помады и блеск для губ</a></div>
-        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop8.png)" class="item"><a href="#">Макияж лица</a></div>
+      <div class="col-md-3 col-xs-6">
+        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop5.png)" class="item"><a href="/eyes">УВЛАЖНЯЮЩИЕ И НОЧНЫЕ КРЕМЫ</a></div>
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop6.png)" class="item"><a href="/all-scincare">УХОД ЗА КОЖЕЙ</a></div>
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop7.png)" class="item"><a href="/face-serum">СЫВОРОТКИ И ЭЛИКСИРЫ</a></div>
+      </div>
+      <div class="col-md-3 col-xs-6">
+        <div style="background-image: url(/catalog/view/theme/charlotte/image/topItems/itemtop8.png)" class="item"><a href="/face">КРЕМ ДЛЯ ГЛАЗ</a></div>
       </div>
     </div>
   </div>

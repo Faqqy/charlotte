@@ -24,6 +24,14 @@ class ControllerCommonFooter extends Controller {
 			
 		$this->load->language('common/footer');
 
+        $this->document->addScript('catalog/view/javascript/giftteaser/fancybox/jquery.fancybox.pack.js');
+        $this->document->addStyle('catalog/view/javascript/giftteaser/fancybox/jquery.fancybox.css');
+        $this->document->addStyle('catalog/view/theme/default/stylesheet/giftteaser.css');
+    	$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
+		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
+		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');  
+      
+
 		$data['scripts'] = $this->document->getScripts('footer');
 
 		$data['text_information'] = $this->language->get('text_information');

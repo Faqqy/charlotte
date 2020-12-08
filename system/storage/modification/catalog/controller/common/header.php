@@ -141,6 +141,16 @@ class ControllerCommonHeader extends Controller {
 			}
 		}
 
+
+			$megamenu_setting = $this->config->get('megamenu_setting');
+			
+			if($megamenu_setting['status']=='1'){
+				$data['megamenu_status']=true;
+				$data['menuvh'] = $this->load->controller('common/menuvh');
+			} else { 
+				$data['megamenu_status']=false;
+			}
+			
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');

@@ -21,12 +21,84 @@
         }
       </style>
       <div class="row">
+
+		  	<?php if(isset($giftTeaser_data) && $giftTeaser_data['Enabled'] && $giftTeaser_data['Enabled']=="yes" && $giftTeaser_data["showFreeGift"]=="yes") { 
+			  foreach($freeGifts as $freeGift) { 
+				 if($freeGift['id'] == $product_id) { ?>
+					<style type="text/css">
+						.freeGiftsMessageWrapper {
+							background-color: <?php echo isset($giftTeaser_data['NoteBackgroundColor']) ? $giftTeaser_data['NoteBackgroundColor'] : '#29C3F0' ?>;
+                            color: <?php echo isset($giftTeaser_data['NoteFontColor']) ? $giftTeaser_data['NoteFontColor'] : '#FFF' ?>;
+                            border: 1px solid <?php echo isset($giftTeaser_data['NoteBorderColor']) ? $giftTeaser_data['NoteBorderColor'] : '#29C3F0' ?>;
+                            border-radius: 4px;
+                            margin: 5px 15px 15px;
+                            display: inline-block;
+                            text-align: Center;
+                            padding: 10px;
+                        }
+						<?php 
+							if(isset($giftTeaser_data['customCss'])) {
+								echo $giftTeaser_data['customCss'];
+							}
+						?>
+					</style>
+					
+					<div class="freeGiftsMessageWrapper">
+						<div>
+							<i class="fa fa-gift" style="font-size:18px;"></i></br><?php echo html_entity_decode($giftTeaser_data['notification_freeGift_'.$language]);?>
+						</div>
+						<?php if(isset($freeGift['description']) && !empty($freeGift['description'])) { ?>
+							<div class="<?php if(isset($giftTeaser_data['widget']) && $giftTeaser_data['widget'] == 'no') echo 'box-content-custom'; else echo 'box-content';?>"> 
+								<div class="notificationMessage freeGiftsMessage">
+									<?php echo $freeGift['description']; ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div> 					
+				<?php  } } } ?>
+		  
         <?php if ($column_left || $column_right) { ?>
         <?php $class = 'col-sm-6'; ?>
         <?php } else { ?>
         <?php $class = 'col-sm-8'; ?>
         <?php } ?>
         <div class="<?php echo $class; ?>">
+
+		<?php if(isset($giftTeaser_data) && $giftTeaser_data['Enabled'] && $giftTeaser_data['Enabled']=="yes" && $giftTeaser_data["showFreeGift"]=="yes") { 
+			  foreach($freeGifts as $freeGift) { 
+				 if($freeGift['id'] == $product_id) { ?>
+					<style type="text/css">
+						.freeGiftsMessageWrapper {
+							background-color: <?php echo isset($giftTeaser_data['NoteBackgroundColor']) ? $giftTeaser_data['NoteBackgroundColor'] : '#29C3F0' ?>;
+                            color: <?php echo isset($giftTeaser_data['NoteFontColor']) ? $giftTeaser_data['NoteFontColor'] : '#FFF' ?>;
+                            border: 1px solid <?php echo isset($giftTeaser_data['NoteBorderColor']) ? $giftTeaser_data['NoteBorderColor'] : '#29C3F0' ?>;
+                            border-radius: 4px;
+                            margin: 5px 15px 15px;
+                            display: inline-block;
+                            text-align: Center;
+                            padding: 10px;
+                        }
+						<?php 
+							if(isset($giftTeaser_data['customCss'])) {
+								echo $giftTeaser_data['customCss'];
+							}
+						?>
+					</style>
+					
+					<div class="freeGiftsMessageWrapper">
+						<div>
+							<i class="fa fa-gift" style="font-size:18px;"></i></br><?php echo html_entity_decode($giftTeaser_data['notification_freeGift_'.$language]);?>
+						</div>
+						<?php if(isset($freeGift['description']) && !empty($freeGift['description'])) { ?>
+							<div class="<?php if(isset($giftTeaser_data['widget']) && $giftTeaser_data['widget'] == 'no') echo 'box-content-custom'; else echo 'box-content';?>"> 
+								<div class="notificationMessage freeGiftsMessage">
+									<?php echo $freeGift['description']; ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div> 					
+				<?php  } } } ?>
+		  
           <ul class="breadcrumb">
             <?php foreach ($breadcrumbs as $breadcrumb) { ?>
             <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
@@ -52,6 +124,42 @@
         <?php $class = 'col-sm-4'; ?>
         <?php } ?>
         <div class="<?php echo $class; ?>">
+
+		<?php if(isset($giftTeaser_data) && $giftTeaser_data['Enabled'] && $giftTeaser_data['Enabled']=="yes" && $giftTeaser_data["showFreeGift"]=="yes") { 
+			  foreach($freeGifts as $freeGift) { 
+				 if($freeGift['id'] == $product_id) { ?>
+					<style type="text/css">
+						.freeGiftsMessageWrapper {
+							background-color: <?php echo isset($giftTeaser_data['NoteBackgroundColor']) ? $giftTeaser_data['NoteBackgroundColor'] : '#29C3F0' ?>;
+                            color: <?php echo isset($giftTeaser_data['NoteFontColor']) ? $giftTeaser_data['NoteFontColor'] : '#FFF' ?>;
+                            border: 1px solid <?php echo isset($giftTeaser_data['NoteBorderColor']) ? $giftTeaser_data['NoteBorderColor'] : '#29C3F0' ?>;
+                            border-radius: 4px;
+                            margin: 5px 15px 15px;
+                            display: inline-block;
+                            text-align: Center;
+                            padding: 10px;
+                        }
+						<?php 
+							if(isset($giftTeaser_data['customCss'])) {
+								echo $giftTeaser_data['customCss'];
+							}
+						?>
+					</style>
+					
+					<div class="freeGiftsMessageWrapper">
+						<div>
+							<i class="fa fa-gift" style="font-size:18px;"></i></br><?php echo html_entity_decode($giftTeaser_data['notification_freeGift_'.$language]);?>
+						</div>
+						<?php if(isset($freeGift['description']) && !empty($freeGift['description'])) { ?>
+							<div class="<?php if(isset($giftTeaser_data['widget']) && $giftTeaser_data['widget'] == 'no') echo 'box-content-custom'; else echo 'box-content';?>"> 
+								<div class="notificationMessage freeGiftsMessage">
+									<?php echo $freeGift['description']; ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div> 					
+				<?php  } } } ?>
+		  
           <!--<div class="btn-group">
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i></button>
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i></button>
@@ -72,16 +180,16 @@
             <ul class="list-unstyled">
               <?php if (!$special) { ?>
               <li>
-                <span class="price-old"><strike><?php echo $price; ?></strike></span>
+                <span class="price-new"><?php echo $price; ?></span>
 
               </li>
               <?php } else { ?>
-              <span class="price-old"><strike><?php echo $price; ?></strike></span>
-              <span class="price-new"><?php echo $special; ?></span>
+              <span class="price-new"><strike><?php echo $price; ?></strike></span>
+              <span class="price-old"><?php echo $special; ?></span>
               <?php } ?>
-              <!-- <?php if ($tax) { ?>
+              <?php if ($tax) { ?>
               <li><?php echo $text_tax; ?> <?php echo $tax; ?></li>
-              <?php } ?> -->
+              <?php } ?>
               <?php if ($points) { ?>
               <li><?php echo $text_points; ?> <?php echo $points; ?></li>
               <?php } ?>
@@ -227,7 +335,7 @@
               <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
               <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
               <br />
-              <a class="button-product" type="button" data-loading-text="<?php echo $text_loading; ?>"><?php echo $button_cart; ?></a>
+              <a class="button-product" id="button-cart" type="button" data-loading-text="<?php echo $text_loading; ?>"><?php echo $button_cart; ?></a>
             </div>
             <?php if ($minimum > 1) { ?>
             <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
@@ -266,6 +374,42 @@
         <?php $class = 'col-xs-6 col-sm-3'; ?>
         <?php } ?>
         <div class="<?php echo $class; ?>">
+
+		<?php if(isset($giftTeaser_data) && $giftTeaser_data['Enabled'] && $giftTeaser_data['Enabled']=="yes" && $giftTeaser_data["showFreeGift"]=="yes") { 
+			  foreach($freeGifts as $freeGift) { 
+				 if($freeGift['id'] == $product_id) { ?>
+					<style type="text/css">
+						.freeGiftsMessageWrapper {
+							background-color: <?php echo isset($giftTeaser_data['NoteBackgroundColor']) ? $giftTeaser_data['NoteBackgroundColor'] : '#29C3F0' ?>;
+                            color: <?php echo isset($giftTeaser_data['NoteFontColor']) ? $giftTeaser_data['NoteFontColor'] : '#FFF' ?>;
+                            border: 1px solid <?php echo isset($giftTeaser_data['NoteBorderColor']) ? $giftTeaser_data['NoteBorderColor'] : '#29C3F0' ?>;
+                            border-radius: 4px;
+                            margin: 5px 15px 15px;
+                            display: inline-block;
+                            text-align: Center;
+                            padding: 10px;
+                        }
+						<?php 
+							if(isset($giftTeaser_data['customCss'])) {
+								echo $giftTeaser_data['customCss'];
+							}
+						?>
+					</style>
+					
+					<div class="freeGiftsMessageWrapper">
+						<div>
+							<i class="fa fa-gift" style="font-size:18px;"></i></br><?php echo html_entity_decode($giftTeaser_data['notification_freeGift_'.$language]);?>
+						</div>
+						<?php if(isset($freeGift['description']) && !empty($freeGift['description'])) { ?>
+							<div class="<?php if(isset($giftTeaser_data['widget']) && $giftTeaser_data['widget'] == 'no') echo 'box-content-custom'; else echo 'box-content';?>"> 
+								<div class="notificationMessage freeGiftsMessage">
+									<?php echo $freeGift['description']; ?>
+								</div>
+							</div>
+						<?php } ?>
+					</div> 					
+				<?php  } } } ?>
+		  
           <div class="product-thumb transition">
             <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
             <div class="caption">
@@ -287,7 +431,7 @@
                 <?php if (!$product['special']) { ?>
                 <?php echo $product['price']; ?>
                 <?php } else { ?>
-                <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
+                <span class="price-old"><?php echo $product['special']; ?></span> <span class="price-new"><?php echo $product['price']; ?></span>
                 <?php } ?>
                 <?php if ($product['tax']) { ?>
                 <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
@@ -333,8 +477,27 @@
           <?php if ($review_status) { ?>
           <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
           <?php } ?>
+
+			<!--xml-->
+			<?php if ($customtabs) { ?>
+            <?php foreach ($customtabs as $key=>$customtab) { ?>
+				<li><a href="#tabcustom<?php echo $key?>" data-toggle="tab"><?php echo $customtab['title']; ?></a></li>
+            <?php } ?>
+            <?php } ?>
+			<!--xml-->
+			
         </ul>
         <div class="tab-content">
+
+			<!--xml-->
+			<?php if ($customtabs) { ?>
+           <?php foreach ($customtabs as $key=>$customtab) { ?>
+				<div class="tab-pane"id="tabcustom<?php echo $key?>">
+					<?php echo $customtab['description']; ?>
+				</div>
+			<?php } }?>
+			<!--xml-->
+			
           <div class="tab-pane active" id="tab-description"><?php echo $description; ?></div>
           <?php if ($attribute_groups) { ?>
           <div class="tab-pane" id="tab-specification">

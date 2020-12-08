@@ -6,11 +6,11 @@
         <ul class="list-unstyled foot__list">
 
           <li><a href="/">Главная</a></li>
-          <li><a href="/uhod-za-kozhej">Уход за кожей</a></li>
-          <li><a href="/makiyazh">Макияж</a></li>
-          <li><a href="/">Лидеры продаж</a></li>
-          <li><a href="/">О магазине</a></li>
-          <li><a href="/dostavka-i-oplata">Доставка и оплата</a></li>
+          <li><a href="/all-skincare">Уход за кожей</a></li>
+          <li><a href="/makeup">Макияж</a></li>
+          <li><a href="/lidery-prodazh">Лидеры продаж</a></li>
+          <li><a href="/about">О магазине</a></li>
+          <li><a href="/shipping-returns">Доставка и оплата</a></li>
 
         </ul>
       </div>

@@ -11,6 +11,12 @@ $(function () {
     $("#click__item").click(function(e) {
         $("#open_list").slideUp(), $(this).next().is(":visible") || $(this).next().slideDown(),
             e.stopPropagation()
+    });
+
+    $('.nsmenu-parent-block').each(function (e) {
+      $(this).attr({
+        'class' : 'nsmenu-parent-block col-md-12 col-md-offset-5 col-sm-12 col-sm-offset-5'
+      });
     })
 
     $(document).ready(function () {

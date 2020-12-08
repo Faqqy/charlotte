@@ -338,9 +338,30 @@ class ControllerCheckoutCart extends Controller {
 			}
 
 			if (!$json) {
-				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id);
+				if(isset($this->session->data['cart'])) {
+				$oldCart = $this->session->data['cart']; 
+			}
+			$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id);
 
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
+
+			$this->load->model('setting/setting');
+			$giftTeaser = $this->model_setting_setting->getSetting('giftteaser', $this->config->get('config_store_id'));
+			if (empty($giftTeaser['giftteaser']['Enabled']) || $giftTeaser['giftteaser']['Enabled'] == 'no') { } else {
+				$this->load->language('extension/module/giftteaser');
+				$addition = '';
+				 
+					foreach ($this->cart->getProducts() as $key => $val) {
+						if (!empty($val['gift_teaser']) && $val['gift_teaser']==true ) {
+							if (!isset($this->session->data['success_addition'])) {
+								$addition = $this->language->get('gift_added_to_cart');
+							}
+						}
+					}	
+				
+				$json['success'] .= $addition;	
+			 }
+		  
 
 				// Unset all shipping and payment methods
 				unset($this->session->data['shipping_method']);
@@ -422,6 +443,7 @@ class ControllerCheckoutCart extends Controller {
 			unset($this->session->data['payment_method']);
 			unset($this->session->data['payment_methods']);
 			unset($this->session->data['reward']);
+$this->checkGifts();
 
 			$this->response->redirect($this->url->link('checkout/cart'));
 		}
@@ -430,6 +452,196 @@ class ControllerCheckoutCart extends Controller {
 		$this->response->setOutput(json_encode($json));
 	}
 
+
+		  public function giftTeaserOptions() {
+          $this->language->load('extension/module/giftteaser');
+          $this->load->model('catalog/product');
+          $this->load->model('tool/image');
+          $this->document->addStyle('catalog/view/theme/default/stylesheet/giftteaser.css');
+          $product_info= $this->model_catalog_product->getProduct($this->request->get['product_id']);
+          $product_options = $this->model_catalog_product->getProductOptions($this->request->get['product_id']);
+          if ($product_info['image']) {
+              $image = $this->model_tool_image->resize($product_info['image'], 80, 80);
+              } else {
+                  $image = false;
+              }
+
+              if ($this->config->get('config_review_status')) {
+                  $rating = (int)$product_info['rating'];
+              } else {
+                  $rating = false;
+              }
+
+              $product_options = $this->model_catalog_product->getProductOptions($product_info['product_id']);
+              $data['options'] = array();
+
+              foreach ($product_options as $option) { 
+                  if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'checkbox' || $option['type'] == 'image') { 
+                      $option_value_data = array();
+
+                      foreach ($option['product_option_value'] as $option_value) {
+                          if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+                              if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
+                                  $price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+                              } else {
+                                  $price = false;
+                              }
+
+                              $option_value_data[] = array(
+                                  'product_option_value_id' => $option_value['product_option_value_id'],
+                                  'option_value_id'         => $option_value['option_value_id'],
+                                  'name'                    => $option_value['name'],
+                                  'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
+                              );
+                          }
+                      }
+
+                      $data['options'][] = array(
+                          'product_option_id' => $option['product_option_id'],
+                          'option_id'         => $option['option_id'],
+                          'name'              => $option['name'],
+                          'type'              => $option['type'],
+                          'option_value'      => $option_value_data,
+                          'required'          => $option['required']
+                      );                  
+                  } elseif ($option['type'] == 'text' || $option['type'] == 'textarea' || $option['type'] == 'file' || $option['type'] == 'date' || $option['type'] == 'datetime' || $option['type'] == 'time') {
+                      $data['options'][] = array(
+                          'product_option_id' => $option['product_option_id'],
+                          'option_id'         => $option['option_id'],
+                          'name'              => $option['name'],
+                          'type'              => $option['type'],
+                          'option_value'      => $option['option_value'],
+                          'required'          => $option['required']
+                      );                      
+                  }
+              }
+          $data['gift'] = array(
+              'product_id' => $product_info['product_id'],
+              'thumb'      => $image,
+              'name'       => $product_info['name'],
+              'rating'     => $rating,
+              'reviews'    => sprintf($this->language->get('text_reviews'), (int)$product_info['reviews']),
+              'href'       => $this->url->link('product/product', 'product_id=' . $product_info['product_id']),
+              'options' => $data['options']
+          );
+          $data['text_select'] = $this->language->get('text_select');
+          $data['text_option'] = $this->language->get('text_option');
+          $data['text_option_heading'] =  $this->language->get('gift_added_to_cart');
+          $data['heading_title'] = $this->language->get('heading_title');
+          $data['button_cart'] = $this->language->get('button_cart');
+          $data['Continue'] = $this->language->get('Continue');
+
+          if (isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1'))) {
+              $data['data']['giftTeaser'] = str_replace('http', 'https', $this->config->get('giftteaser'));
+          } else {
+              $data['data']['giftTeaser'] = $this->config->get('giftteaser');
+          }
+
+			
+		 $this->response->setOutput($this->load->view('extension/module/giftteaser/giftteaser_options', $data));
+		
+      }
+
+      public function checkGifts() { 
+         	  $this->load->model('extension/module/giftteaser');
+			  $json = $this->model_extension_module_giftteaser->checkGifts();
+				
+              $this->response->setOutput(json_encode($json));   
+          
+      }
+
+      public function GiftAdd() { 
+          $this->language->load('checkout/cart');
+          $json = array();
+          if (isset($this->request->post['product_id'])) {
+              $product_id = $this->request->post['product_id'];
+          } else {
+              $product_id = 0;
+          }
+
+          $this->load->model('catalog/product');
+          $product_info = $this->model_catalog_product->getProduct($product_id);
+
+          if ($product_info) {            
+              if (isset($this->request->post['quantity'])) {
+                  $quantity = $this->request->post['quantity'];
+              } else {
+                  $quantity = 1;
+              }
+
+              if (isset($this->request->post['option'])) {
+                  $option = array_filter($this->request->post['option']);
+              } else {
+                  $option = array();  
+              }
+
+              if (isset($this->request->post['recurring_id'])) {
+                  $recurring_id = $this->request->post['recurring_id'];
+              } else {
+                  $recurring_id = 0;
+              }
+
+              $product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
+
+              foreach ($product_options as $product_option) {
+                  if ($product_option['required'] && empty($option[$product_option['product_option_id']])) {
+                      $json['error']['option'][$product_option['product_option_id']] = sprintf($this->language->get('error_required'), $product_option['name']);
+                  }
+              }
+
+             $recurrings = $this->model_catalog_product->getProfiles($product_info['product_id']);
+
+			if ($recurrings) {
+				$recurring_ids = array();
+
+				foreach ($recurrings as $recurring) {
+					$recurring_ids[] = $recurring['recurring_id'];
+				}
+
+				if (!in_array($recurring_id, $recurring_ids)) {
+					$json['error']['recurring'] = $this->language->get('error_recurring_required');
+				}
+			}
+
+              if (!$json) { 
+				  $this->cart->prepareGiftTeaserArg($gift = true);
+
+                  $this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id);
+                  $json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
+
+          $this->load->model('extension/module/giftteaser');
+          $this->load->model('setting/setting');
+
+		  $giftTeaser = $this->model_setting_setting->getSetting('giftteaser', $this->config->get('config_store_id'));
+
+          if (empty($giftTeaser['giftteaser']['Enabled']) || $giftTeaser['giftteaser']['Enabled'] == 'no') { } else {
+              $this->load->language('extension/module/giftteaser');
+              $prods = $this->cart->getProducts(); 
+              $addition = '';
+
+              foreach ($prods as $prod) {
+                  if ($prod['gift_teaser']==true && !isset($this->session->data['gift_teaser_success'])) {
+                      $addition = $this->language->get('gift_added_to_cart');
+                      $this->session->data['gift_teaser_success'] = true;
+                  }
+              }
+              if(isset($json['success'])) {
+                  $json['success'] .= $addition;
+              }   
+           }
+                  unset($this->session->data['shipping_method']);
+                  unset($this->session->data['shipping_methods']);
+                  unset($this->session->data['payment_method']);
+                  unset($this->session->data['payment_methods']);
+
+              } else {
+                  $json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
+              }
+          }
+
+          $this->response->setOutput(json_encode($json));       
+      }
+        
 	public function remove() {
 		$this->load->language('checkout/cart');
 
@@ -448,6 +660,7 @@ class ControllerCheckoutCart extends Controller {
 			unset($this->session->data['payment_method']);
 			unset($this->session->data['payment_methods']);
 			unset($this->session->data['reward']);
+$this->checkGifts();
 
 			// Totals
 			$this->load->model('extension/extension');

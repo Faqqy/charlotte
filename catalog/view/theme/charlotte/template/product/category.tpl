@@ -19,9 +19,7 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <div class="discription-text">
         <?php echo $description; ?>
-      </div>
       <?php if ($categories) { ?>
 
       <?php if (count($categories) <= 5) { ?>
@@ -35,7 +33,7 @@
         </div>
       </div>-->
       <?php } else { ?>
-      <div class="row">
+     <!-- <div class="row">
         <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
         <div class="col-sm-3">
           <ul>
@@ -149,3 +147,4 @@
     <?php echo $column_right; ?></div>
 </div>
 <?php echo $footer; ?>
+

@@ -58,3 +58,73 @@ NOT FOUND!
 CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
 FILE: catalog/controller/checkout/cart.php
 MOD: Image Cart
+2020-11-22 18:00:39 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-22 18:03:29 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-22 19:10:50 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-22 19:11:57 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-22 19:17:18 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-22 19:20:34 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-22 19:45:33 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-22 19:47:13 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-28 1:45:42 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-11-28 2:36:50 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-12-07 20:37:42 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-12-08 0:17:19 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-12-08 0:18:07 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart
+2020-12-08 23:19:33 - ----------------------------------------------------------------
+NOT FOUND!
+CODE: $json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+FILE: catalog/controller/checkout/cart.php
+MOD: Image Cart

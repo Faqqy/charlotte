@@ -38,6 +38,11 @@
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
+
+			<!--xml-->
+			<li><a href="#tab-customtabmain" data-toggle="tab"><?php echo $tab_customtab; ?></a></li>
+			<!--xml-->
+			
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -916,6 +921,78 @@
                 </table>
               </div>
             </div>
+
+			<!--xml-->
+			<div class="tab-pane" id="tab-customtabmain">
+				 <div class="col-sm-2">
+				  <ul class="nav nav-pills nav-stacked" id="customtab">
+					<?php $customtab_row = 0; ?>
+					<?php foreach ($product_customtabs as $product_customtab) { ?>
+					<li><a href="#tab-customtab<?php echo $customtab_row; ?>" data-toggle="tab"><i class="fa fa-minus-circle" onclick="$('a[href=\'#tab-customtab<?php echo $customtab_row; ?>\']').parent().remove(); $('#tab-customtab<?php echo $customtab_row; ?>').remove(); $('#customtab a:first').tab('show');"></i> <?php echo $tab_customtab . ' ' . $customtab_row; ?></a></li>
+					<?php $customtab_row++; ?>
+					<?php } ?>
+					<li id="customtab-add"><a onclick="addCustomtab();"><i class="fa fa-plus-circle"></i> <?php echo $button_customtab_add; ?></a></li>
+				  </ul>
+				</div>
+			<div class="col-sm-10">
+              <div class="tab-content tab-content2">
+                <?php $customtab_row = 0; ?>
+				<?php foreach ($product_customtabs as $product_customtab) { ?>
+                <div class="tab-pane" id="tab-customtab<?php echo $customtab_row; ?>">
+                  <ul class="nav nav-tabs" id="clanguage<?php echo $customtab_row; ?>">
+                    <?php foreach ($languages as $language) { ?>
+                    <li><a href="#tab-customtab<?php echo $customtab_row; ?>-language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" />  <?php echo $language['name']; ?></a></li>
+                    <?php } ?>
+                  </ul>
+                  <div class="tab-content">
+                    <?php foreach ($languages as $language) { ?>
+                    <div class="tab-pane" id="tab-customtab<?php echo $customtab_row; ?>-language<?php echo $language['language_id']; ?>">
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-heading<?php echo $customtab_row; ?>-language<?php echo $language['language_id']; ?>"><?php echo $entry_title; ?></label>
+                        <div class="col-sm-10">
+                          <input type="text" name="product_customtab[<?php echo $customtab_row; ?>][product_customtab_description][<?php echo $language['language_id']; ?>][title]" value="<?php echo isset($product_customtab['product_customtab_description'][$language['language_id']]) ? $product_customtab['product_customtab_description'][$language['language_id']]['title'] : ''; ?>" class="form-control"/>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-description<?php echo $customtab_row; ?>-language<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
+                        <div class="col-sm-10">
+                          <textarea name="product_customtab[<?php echo $customtab_row; ?>][product_customtab_description][<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $customtab_row; ?>-language<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_customtab['product_customtab_description'][$language['language_id']]) ? $product_customtab['product_customtab_description'][$language['language_id']]['description'] : ''; ?></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <?php } ?>
+                  </div>
+					<div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-sort_order<?php echo $customtab_row; ?>"><?php echo $entry_sort_order; ?></label>
+                        <div class="col-sm-10">
+                         <input type="text" name="product_customtab[<?php echo $customtab_row; ?>][sort_order]" value="<?php echo $product_customtab['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" />
+                        </div>
+					</div>
+					<div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-status<?php echo $customtab_row; ?>"><?php echo $entry_sort_order; ?></label>
+                        <div class="col-sm-10">
+                        <select name="product_customtab[<?php echo $customtab_row; ?>][status]" id="input-status" class="form-control">
+						<?php if ($product_customtab['status']) { ?>
+						<option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+						<option value="0"><?php echo $text_disabled; ?></option>
+						<?php } else { ?>
+						<option value="1"><?php echo $text_enabled; ?></option>
+						<option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+						<?php } ?>
+					  </select>
+                        </div>
+					</div>
+					
+					
+				  
+                </div>
+				<?php $customtab_row++; ?>
+                <?php } ?>
+              </div>
+            </div>
+			</div>
+			<!--xml-->
+			
             <div class="tab-pane" id="tab-design">
               <div class="table-responsive">
                 <table class="table table-bordered table-hover">
@@ -1456,4 +1533,87 @@ $('.datetime').datetimepicker({
 $('#language a:first').tab('show');
 $('#option a:first').tab('show');
 //--></script></div>
+
+			<!--xml-->
+			
+			<script type="text/javascript"><!--
+<?php $customtab_row = 0; ?>
+<?php foreach ($product_customtabs as $product_customtab) { ?>
+<?php foreach ($languages as $language) { ?>
+$('#input-description<?php echo $customtab_row; ?>-language<?php echo $language['language_id']; ?>').summernote({
+	height: 300
+});
+<?php } ?>
+<?php $customtab_row++; ?>
+<?php } ?>
+
+
+//--></script> 
+
+<script type="text/javascript"><!--
+var customtab_row = <?php echo $customtab_row; ?>;
+
+function addCustomtab() {	
+	html  = '<div id="tab-customtab' + customtab_row + '" class="tab-pane">';
+	html += '  <ul class="nav nav-tabs" id="clanguage' + customtab_row + '">';
+    <?php foreach ($languages as $language) { ?>
+     html += '    <li><a href="#tab-customtab' + customtab_row + '-language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>';
+    <?php } ?>
+	html += '  </ul>';
+
+	html += '  <div class="tab-content">';
+	<?php foreach ($languages as $language) { ?>
+	html += '    <div class="tab-pane" id="tab-customtab' + customtab_row + '-language<?php echo $language['language_id']; ?>">';
+	html += '      <div class="form-group">';
+	html += '        <label class="col-sm-2 control-label" for="input-title' + customtab_row + '-language<?php echo $language['language_id']; ?>"><?php echo $entry_title; ?></label>';
+	html += '        <div class="col-sm-10"><input type="text" name="product_customtab[' + customtab_row + '][product_customtab_description][<?php echo $language['language_id']; ?>][title]" placeholder="<?php echo $entry_title; ?>" id="input-title' + customtab_row + '-language<?php echo $language['language_id']; ?>" value="" class="form-control"/></div>';
+	html += '      </div>';
+	html += '      <div class="form-group">';
+	html += '        <label class="col-sm-2 control-label" for="input-description' + customtab_row + '-language<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>';
+	html += '        <div class="col-sm-10"><textarea name="product_customtab[' + customtab_row + '][product_customtab_description][<?php echo $language['language_id']; ?>][description]" id="input-description' + customtab_row + '-language<?php echo $language['language_id']; ?>"></textarea></div>';
+	html += '      </div>';
+	html += '    </div>';
+	<?php } ?>
+	html += '  </div>';
+	html += '      <div class="form-group">';
+	html += '        <label class="col-sm-2 control-label" for="input-status' + customtab_row +'"><?php echo $entry_status; ?></label>';
+	html += '        <div class="col-sm-10"><select name="product_customtab[' + customtab_row + '][status]" class="form-control"><option value="1"><?php echo $text_enabled; ?></option><option value="0"><?php echo $text_disabled; ?></option></select></div>';
+	html += '      </div>';
+	html += '  <div class="form-group">';
+	html += '<label class="col-sm-2 control-label" for="input-sort_order' + customtab_row +'"><?php echo $entry_sort_order; ?></label>';
+	html += ' <div class="col-sm-10"><input type="text" name="product_customtab[' + customtab_row + '][sort_order]" value="" class="form-control" /></div>';
+	html += '</div>';
+	html += '</div>';
+	
+	$('#tab-customtabmain .tab-content2').append(html);
+	
+	<?php foreach ($languages as $language) { ?>
+	$('#input-description' + customtab_row + '-language<?php echo $language['language_id']; ?>').summernote({
+		height: 300
+	});
+	<?php } ?>
+	
+	$('#customtab a[href=\'#tab-customtab' + customtab_row + '\']').tab('show');
+	
+	$('#clanguage' + customtab_row + ' li:first-child a').tab('show');
+	
+	$('#customtab-add').before('<li><a href="#tab-customtab' + customtab_row + '" data-toggle="tab"><i class="fa fa-minus-circle" onclick="$(\'a[href=\\\'#tab-customtab' + customtab_row + '\\\']\').parent().remove(); $(\'#tab-customtab' + customtab_row + '\').remove(); $(\'#customtab li a:first\').tab(\'show\');"></i> <?php echo $tab_customtab; ?> ' + customtab_row + '</a></li>');
+	
+	
+	$('#customtab-' + customtab_row).trigger('click');
+	
+	customtab_row++;
+}
+//--></script> 
+
+<script type="text/javascript"><!--
+$('#customtab li:first-child a').tab('show');
+<?php $customtab_row = 0; ?>
+<?php foreach ($product_customtabs as $product_customtab) { ?>
+$('#clanguage<?php echo $customtab_row; ?> li:first-child a').tab('show');
+<?php $customtab_row++; ?>
+<?php } ?> 
+//--></script> 
+<!--xml-->
+			
 <?php echo $footer; ?>

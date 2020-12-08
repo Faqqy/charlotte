@@ -574,7 +574,23 @@ class ControllerSaleOrder extends Controller {
 			$products = $this->model_sale_order->getOrderProducts($this->request->get['order_id']);
 
 			foreach ($products as $product) {
+
+			$this->load->model('setting/setting');
+			$giftTeaser = $this->model_setting_setting->getSetting('giftteaser', $this->config->get('config_store_id'));
+
+			if(isset($giftTeaser['giftteaser']) && $giftTeaser['giftteaser']['Enabled'] == 'yes') {
+				$free_gift_label = $giftTeaser['giftteaser']['FreeGiftLabel'][$this->config->get('config_language_id')];
+			}
+		  		if (isset($free_gift_label) &&  strpos($product['name'], $free_gift_label) !== false && $product['price'] == 0) {
+					$product['gift_teaser'] = 'true';
+				} else {
+					$product['gift_teaser'] = 'false';
+				}
+		  
 				$data['order_products'][] = array(
+
+		  	'gift_teaser'   => $product['gift_teaser'],
+		  
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'model'      => $product['model'],
